@@ -21,13 +21,13 @@ model Admin {
 
 model Schedule {
   id               String        @id @default(uuid())
-  professionalId   String?
+  professional_id  String?
   service          String?
   date             DateTime?
-  time             DateTime?
+  time             String?
   client_name      String?
   client_telephone String?
-  professional     Professional? @relation(fields: [professionalId], references: [id])
+  professional     Professional? @relation(fields: [professional_id], references: [id])
 
   @@map("schedule")
 }
