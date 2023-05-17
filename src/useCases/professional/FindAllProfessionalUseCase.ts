@@ -6,6 +6,7 @@ export class FindAllProfessionalUseCase {
         const professionals = await prisma.professional.findMany({
             where: {},
             include: {
+                services: true,
                 Schedule: true
             }
         })

@@ -35,11 +35,21 @@ model Schedule {
 model Professional {
   id                String     @id @default(uuid())
   professional_name String?
-  services          String[]
+  services          Service[]
   photo             String?
   adminId           String?
   admin             Admin?     @relation(fields: [adminId], references: [id])
   Schedule          Schedule[]
 
   @@map("professional")
+}
+
+model Service {
+  id         String  @id @default(uuid())
+  type       String
+  value      Float 
+  professional Professional @relation(fields: [professionalId], references: [id])
+  professionalId String
+
+  @@map("services")
 }
