@@ -6,6 +6,7 @@ import { FindAllAdminController } from "./useCases/admin/FindAllAdminController"
 import { FindAllProfessinalController } from "./useCases/professional/FindAllProfessionalController"
 import { FindAllScheduleController } from "./useCases/schedule/FindAllScheduleController"
 import { CreateServiceController } from "./useCases/service/CreateServiceController"
+import { FindProfessionalControllerId } from "./useCases/professional/FindProfessionalControllerId"
 const createAdminController = new CreateAdminController()
 const createProfessionalController = new CreateProfessionalController()
 const createSheduleController = new CreateScheduleController()
@@ -13,6 +14,7 @@ const findAllAdminController = new FindAllAdminController()
 const findAllProfessionalController = new FindAllProfessinalController
 const findAllScheduleController = new FindAllScheduleController()
 const createServiceController = new CreateServiceController()
+const findProfessionalControllerId = new FindProfessionalControllerId()
 
 const routes = Router()
 
@@ -23,6 +25,7 @@ routes.get("/admins", findAllAdminController.handle)
 //professional
 routes.post("/professional", createProfessionalController.handle)
 routes.get("/professional", findAllProfessionalController.handle )
+routes.get("/professional/:id/services", findProfessionalControllerId.handle)
 
 //schedule
 routes.post("/schedule", createSheduleController.handle)
