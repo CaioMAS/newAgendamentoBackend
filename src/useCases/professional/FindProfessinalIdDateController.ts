@@ -2,8 +2,6 @@ import { Request, Response } from "express";
 import { FindProfessinalIdDateUseCase } from "./FIndProfessinalIdDateUseCase";
 
 
-
-
 export class FindProfessinalIdDateController {
   async handle(request: Request, response: Response) {
     const { id, date } = request.params;

@@ -32,6 +32,5 @@ export class CreateAdminUseCase {
 
         return admin
     }   
-
     
 }
