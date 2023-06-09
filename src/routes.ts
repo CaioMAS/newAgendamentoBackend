@@ -9,6 +9,8 @@ import { CreateServiceController } from "./useCases/service/CreateServiceControl
 import { FindProfessionalControllerId } from "./useCases/professional/FindProfessionalControllerId"
 import { FindProfessinalIdDateController } from "./useCases/professional/FIndProfessinalIdDateController"
 import { AuthenticateAdminController } from "./useCases/authenticateAdmin/AuthenticateAdminController"
+import { EnsureAuthentication } from "./middlewares/ensureAuthentication"
+import { FindAdminIdController } from "./useCases/admin/FindAdminIdController"
 
 const createAdminController = new CreateAdminController()
 const createProfessionalController = new CreateProfessionalController()
@@ -20,19 +22,22 @@ const createServiceController = new CreateServiceController()
 const findProfessionalControllerId = new FindProfessionalControllerId()
 const findProfessionalIdDateController = new FindProfessinalIdDateController()
 const authenticateadminController = new AuthenticateAdminController()
+const findAdminIdController = new FindAdminIdController()
 
 const routes = Router()
 
 //admin
+routes.get("/admin/:id/", findAdminIdController.handle)
 routes.post("/admins", createAdminController.handle)
 routes.get("/admins", findAllAdminController.handle)
 
+
 //routes authenticate
-routes.post("/admins/authenticate/", authenticateadminController.handle)
+routes.post("/authenticate", authenticateadminController.handle)
 
 //professional
-routes.post("/professional", createProfessionalController.handle)
-routes.get("/professional",  findAllProfessionalController.handle )
+routes.post("/professional", EnsureAuthentication, createProfessionalController.handle)
+routes.get("/professional", findAllProfessionalController.handle )
 routes.get("/professional/:id/services", findProfessionalControllerId.handle)
 routes.get("/professional/:id/:date", findProfessionalIdDateController.handle)
 
@@ -41,7 +46,7 @@ routes.post("/schedule", createSheduleController.handle)
 routes.get("/schedule/:id", findAllScheduleController.handle)
 
 //service
-routes.post("/services", createServiceController.handle)
+routes.post("/services", EnsureAuthentication, createServiceController.handle)
 
 
 export {routes}

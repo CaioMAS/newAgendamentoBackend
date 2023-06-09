@@ -12,8 +12,9 @@ datasource db {
 
 model Admin {
   id           String         @id @default(uuid())
+  name         String?
   email        String?        @unique
-  password     String?
+  password     String
   Professional Professional[]
 
   @@map("admin")
@@ -45,10 +46,10 @@ model Professional {
 }
 
 model Service {
-  id         String  @id @default(uuid())
-  type       String
-  value      Float 
-  professional Professional @relation(fields: [professionalId], references: [id])
+  id             String       @id @default(uuid())
+  type           String
+  value          Float
+  professional   Professional @relation(fields: [professionalId], references: [id])
   professionalId String
 
   @@map("services")

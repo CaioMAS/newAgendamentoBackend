@@ -8,30 +8,32 @@ interface IAuthenticateAdmin {
 }
 
 export class AuthenticateAdminUseCase {
-    async execute ({email, password}: IAuthenticateAdmin) {
+    async execute({ email, password }: IAuthenticateAdmin) {
         const admin = await prisma.admin.findFirst({
             where: {
                 email
             }
         })
 
-        if(!admin) {
+        if (!admin) {
             throw new Error("Username or password invalid!")
         }
 
         // Verificar se senha corresponde ao username
         const passwordMatch = await compare(password, admin.password)
 
-        if(!passwordMatch) {
+        if (!passwordMatch) {
             throw new Error("Username or password invalid!")
         }
 
         // Gerar o token
-        const token = sign({email}, "13474f3ed4aa1d5671be1267e2c57753", {
-            subject: admin.id,
+        const token = sign({ id: admin.id }, "13474f3ed4aa1d5671be1267e2c57753", {
             expiresIn: "1d"
         })
 
-        return token
+        const { id } = admin
+
+        return { admin: { id, email }, token }
+
     }
 }
