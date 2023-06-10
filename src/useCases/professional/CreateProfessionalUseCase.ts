@@ -1,19 +1,19 @@
-import { prisma } from "../../services/database";
+import { prisma } from "../../services/database"
 
 interface ICreateProfessional {
-    professional_name: string,    
-    photo: string,
-    adminId: string 
+    professional_name: string
+    photo: string
+    adminId: string
 }
 
 export class CreateProfessionalUseCase {
-    async execute({professional_name, photo, adminId}: ICreateProfessional) {
+    async execute({ professional_name, photo, adminId }: ICreateProfessional) {
         const professional = await prisma.professional.create({
             data: {
-                professional_name,                
-                photo,                
-                adminId
-            }
+                professional_name,
+                photo,
+                adminId,
+            },
         })
 
         return professional

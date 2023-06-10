@@ -1,39 +1,37 @@
-import { hash } from "bcrypt";
-import { prisma } from "../../services/database";
+import { hash } from "bcrypt"
+import { prisma } from "../../services/database"
 
 interface ICreateAdmin {
-    email: string,
+    email: string
     password: string
     name: string
 }
 
 export class CreateAdminUseCase {
-    async execute({email, password, name }: ICreateAdmin) {
+    async execute({ email, password, name }: ICreateAdmin) {
         const adminExist = await prisma.admin.findFirst({
             where: {
                 email: {
                     equals: email,
-                    mode: "insensitive"
-                }
-            }
+                    mode: "insensitive",
+                },
+            },
         })
 
-        if(adminExist) {
+        if (adminExist) {
             throw new Error("Admin already exists")
         }
 
-        const hashPassword = await hash (password, 10)
+        const hashPassword = await hash(password, 10)
 
         const admin = await prisma.admin.create({
             data: {
-                email,               
+                email,
                 password: hashPassword,
-                name
-                
-            }
+                name,
+            },
         })
 
         return admin
-    }   
-    
+    }
 }

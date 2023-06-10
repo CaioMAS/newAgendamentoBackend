@@ -1,10 +1,16 @@
-import { Request, Response } from "express";
-import { CreateScheduleUseCase } from "./CreateScheduleUseCase";
-
+import { Request, Response } from "express"
+import { CreateScheduleUseCase } from "./CreateScheduleUseCase"
 
 export class CreateScheduleController {
-    async handle (request: Request, response: Response) {        
-        const {service, date, time, client_name, client_telephone, professional_id} = request.body
+    async handle(request: Request, response: Response) {
+        const {
+            service,
+            date,
+            time,
+            client_name,
+            client_telephone,
+            professional_id,
+        } = request.body
 
         const createScheduleUseCase = new CreateScheduleUseCase()
         const schedule = await createScheduleUseCase.execute({
@@ -12,8 +18,8 @@ export class CreateScheduleController {
             client_telephone,
             date,
             service,
-            time, 
-            professional_id
+            time,
+            professional_id,
         })
 
         return response.json(schedule)

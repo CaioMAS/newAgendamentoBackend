@@ -11,8 +11,8 @@ export class AuthenticateAdminUseCase {
     async execute({ email, password }: IAuthenticateAdmin) {
         const admin = await prisma.admin.findFirst({
             where: {
-                email
-            }
+                email,
+            },
         })
 
         if (!admin) {
@@ -27,13 +27,16 @@ export class AuthenticateAdminUseCase {
         }
 
         // Gerar o token
-        const token = sign({ id: admin.id }, "13474f3ed4aa1d5671be1267e2c57753", {
-            expiresIn: "1d"
-        })
+        const token = sign(
+            { id: admin.id },
+            "13474f3ed4aa1d5671be1267e2c57753",
+            {
+                expiresIn: "1d",
+            },
+        )
 
         const { id } = admin
 
         return { admin: { id, email }, token }
-
     }
 }

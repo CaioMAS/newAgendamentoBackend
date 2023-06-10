@@ -16,7 +16,7 @@ const createAdminController = new CreateAdminController()
 const createProfessionalController = new CreateProfessionalController()
 const createSheduleController = new CreateScheduleController()
 const findAllAdminController = new FindAllAdminController()
-const findAllProfessionalController = new FindAllProfessinalController
+const findAllProfessionalController = new FindAllProfessinalController()
 const findAllScheduleController = new FindAllScheduleController()
 const createServiceController = new CreateServiceController()
 const findProfessionalControllerId = new FindProfessionalControllerId()
@@ -31,13 +31,12 @@ routes.get("/admin/:id/", findAdminIdController.handle)
 routes.post("/admins", createAdminController.handle)
 routes.get("/admins", findAllAdminController.handle)
 
-
 //routes authenticate
 routes.post("/authenticate", authenticateadminController.handle)
 
 //professional
-routes.post("/professional", EnsureAuthentication, createProfessionalController.handle)
-routes.get("/professional", findAllProfessionalController.handle )
+routes.post("/professional", createProfessionalController.handle)
+routes.get("/professional", findAllProfessionalController.handle)
 routes.get("/professional/:id/services", findProfessionalControllerId.handle)
 routes.get("/professional/:id/:date", findProfessionalIdDateController.handle)
 
@@ -46,7 +45,6 @@ routes.post("/schedule", createSheduleController.handle)
 routes.get("/schedule/:id", findAllScheduleController.handle)
 
 //service
-routes.post("/services", EnsureAuthentication, createServiceController.handle)
+routes.post("/services", createServiceController.handle)
 
-
-export {routes}
+export { routes }

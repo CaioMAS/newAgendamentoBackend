@@ -1,5 +1,5 @@
-import { response } from "express";
-import { prisma } from "../../services/database";
+import { response } from "express"
+import { prisma } from "../../services/database"
 
 export class FindAllProfessionalUseCase {
     async execute() {
@@ -7,8 +7,8 @@ export class FindAllProfessionalUseCase {
             where: {},
             include: {
                 services: true,
-                Schedule: true
-            }
+                Schedule: true,
+            },
         })
 
         return professionals
