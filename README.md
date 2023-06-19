@@ -32,7 +32,7 @@ Atributos:
 - **name** (String, opcional): Nome do administrador.
 - **email** (String, opcional e único): Endereço de e-mail do administrador.
 - **password** (String, obrigatório): Senha do administrador.
-- Professional (relação opcional): Relação com os profissionais associados ao administrador.
+- **Professional** (relação opcional): Relação com os profissionais associados ao administrador.
 
 ## Schedule
 
