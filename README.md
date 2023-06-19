@@ -113,7 +113,7 @@ O projeto utiliza as seguintes tecnologias:
 Siga as instruções abaixo para configurar o banco de dados:
 
 1 - Crie um arquivo chamado **.env** na raiz do projeto e defina as seguintes variáveis de ambiente:
-DATABASE_URL="postgresql://usuario:senha@localhost:3306/nome-do-banco"
+DATABASE_URL="postgresql://usuario:senha@localhost:3000/nome-do-banco"
 Substitua **usuario, senha e nome-do-banco** pelas informações corretas do seu banco de dados.
 
 2 - Execute o comando abaixo para gerar as migrações do banco de dados:
