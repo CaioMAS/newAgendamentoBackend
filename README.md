@@ -105,7 +105,12 @@ yarn install
 
 ## Configuração do Banco de Dados
 
-O projeto utiliza o banco de dados Prisma. Siga as instruções abaixo para configurar o banco de dados:
+O projeto utiliza as seguintes tecnologias:
+
+- Prisma ORM
+- PostgreSQL
+
+Siga as instruções abaixo para configurar o banco de dados:
 
 1 - Crie um arquivo chamado **.env** na raiz do projeto e defina as seguintes variáveis de ambiente:
 DATABASE_URL="postgresql://usuario:senha@localhost:3306/nome-do-banco"
