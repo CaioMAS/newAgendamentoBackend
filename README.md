@@ -109,7 +109,6 @@ O projeto utiliza o banco de dados Prisma. Siga as instruções abaixo para conf
 
 1 - Crie um arquivo chamado .env na raiz do projeto e defina as seguintes variáveis de ambiente:
 DATABASE_URL="postgresql://usuario:senha@localhost:3306/nome-do-banco"
-
 Substitua usuario, senha e nome-do-banco pelas informações corretas do seu banco de dados.
 
 2 - Execute o comando abaixo para gerar as migrações do banco de dados:
@@ -124,10 +123,15 @@ Isso criará as tabelas necessárias no banco de dados.
 Contribuições são bem-vindas! Se você deseja contribuir para este projeto, siga as etapas abaixo:
 
 1 - Fork este repositório.
+
 2 - Crie uma branch com sua feature ou correção de bug: git checkout -b minha-feature.
+
 3 - Faça as alterações necessárias e adicione os devidos testes.
+
 4 - Commit suas mudanças: git commit -m 'Minha nova feature'.
+
 5 - Push para a branch criada: git push origin minha-feature.
+
 6 - Envie um Pull Request.
 
 ## Suporte
