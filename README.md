@@ -4,10 +4,10 @@ Esta documentação fornece informações completas sobre o projeto de agendamen
 
 ## Sumário
 - Modelos
- - Admin
- - Schedule
- - Professional
- - Service
+  - Admin
+  - Schedule
+  - Professional
+  - Service
  
 - Configuração
   - Pré-requisitos
